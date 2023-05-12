@@ -73,6 +73,7 @@ msgraph_auth()
 # Query
 # to run additional queries, update the URL with the different Graph endpoints
 # this is a great resource to find the API you would like: https://developer.microsoft.com/en-us/graph/graph-explorer
+# this specific query will list all sharepoints available in your environment. You must have proper permissions to run this query
 queryResults = msgraph_request('https://graph.microsoft.com/v1.0/sites?search=*', requestHeaders)
 
 # Results to Dataframe
