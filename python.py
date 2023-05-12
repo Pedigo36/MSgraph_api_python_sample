@@ -5,6 +5,7 @@ import requests
 import pandas as pd 
 from datetime import datetime
 
+
 accessToken = None 
 requestHeaders = None 
 tokenExpiry = None 
@@ -19,6 +20,8 @@ def msgraph_auth():
     global requestHeaders
     global tokenExpiry
     
+    #for more information onthese fields:
+    #https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
     clientID = "{cliendID}"
     clientSecret = "{clientSecret}"
     tenantID = "{tenantID}"
@@ -62,10 +65,14 @@ def msgraph_request(resource, requestHeaders):
     results = requests.get(resource, headers=requestHeaders).json()
     return results
 
-# Auth
+# Auth - this executes the auth request
 msgraph_auth()
 
+
+
 # Query
+# to run additional queries, update the URL with the different Graph endpoints
+# this is a great resource to find the API you would like: https://developer.microsoft.com/en-us/graph/graph-explorer
 queryResults = msgraph_request('https://graph.microsoft.com/v1.0/sites?search=*', requestHeaders)
 
 # Results to Dataframe
